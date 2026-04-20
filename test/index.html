@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>INTERVIEW GUIDE - Question Selection | Tillamook</title>
+  <style>
+    @import 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600&family=Ultra:ital,wght@0,400&display=swap';
+    
+    :root {
+      --blue: #003087;
+      --orange: #f15a22;
+      --light: #f9fbfd;
+      --dark: #001f3f;
+      --yellow-bg: #fff8e1;
+    }
+    * { box-sizing: border-box; margin:0; padding:0; }
+    html, body, input, textarea, button, select, pre, code {
+      font-family: 'Poppins', Arial, sans-serif;
+    }
+    body {
+      background: var(--blue);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      margin: 0;
+    }
+    .header {
+      text-align: center;
+      padding: 1rem 1rem 0.75rem;
+      background: var(--blue);
+    }
+    .header h1 { 
+      font-size: clamp(1.2rem, 3vw, 2rem); 
+      text-transform: uppercase; 
+      letter-spacing: 0.2em; 
+      margin-bottom: 0.25rem; 
+      color: white; 
+    }
+    .header .sub { 
+      font-size: clamp(0.9rem, 2vw, 1.4rem); 
+      color: var(--orange); 
+    }
+    .header hr { 
+      border: none; 
+      height: 3px; 
+      background: var(--orange); 
+      width: min(250px, 70%); 
+      margin: 0.75rem auto; 
+    }
+    .container {
+      position: relative;
+      width: 90%;
+      max-width: 1400px;
+      margin: 0 auto 2rem;
+      background: white;
+      color: var(--dark);
+      border-radius: 16px;
+      box-shadow: 0 20px 70px rgba(0,0,0,0.5);
+      flex: 1;
+      overflow: hidden;
+      min-height: 600px;
+    }
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      overflow-y: auto;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease;
+      box-sizing: border-box;
+    }
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    h2 {
+      color: var(--blue);
+      font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+      margin: 0 0 clamp(1rem, 2vw, 1.5rem) 0;
+      border-bottom: 4px solid var(--orange);
+      padding-bottom: 0.75rem;
+    }
+    .intro {
+      background: var(--yellow-bg);
+      padding: clamp(1.2rem, 3vw, 2rem);
+      border-radius: 12px;
+      margin-bottom: clamp(1.5rem, 4vw, 2rem);
+      border: 1px solid #eee;
+      font-size: clamp(0.9rem, 1.5vw, 1.15rem);
+      line-height: 1.8;
+    }
+    .intro h2 { margin-top: 0; }
+    .question-item {
+      padding: 1rem;
+      margin-bottom: 0.75rem;
+      background: var(--light);
+      border-radius: 8px;
+      border: 2px solid #ddd;
+      transition: all 0.2s;
+    }
+    .question-item:hover {
+      border-color: var(--blue);
+      background: white;
+    }
+    .question-item label {
+      display: flex;
+      align-items: flex-start;
+      cursor: pointer;
+      gap: 1rem;
+    }
+    .question-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .question-label {
+      display: flex;
+      align-items: flex-start;
+      cursor: pointer;
+      gap: 1rem;
+      flex: 1;
+    }
+    .question-item input[type="checkbox"] {
+      margin-top: 0.25rem;
+      transform: scale(1.3);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .question-item span {
+      flex: 1;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .question-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.6rem;
+      background: var(--yellow-bg);
+      border-radius: 6px;
+      border: 1px solid var(--orange);
+      flex-shrink: 0;
+    }
+    .rating-label {
+      font-weight: 600;
+      color: var(--orange);
+      margin-right: 0.25rem;
+      font-size: 0.9rem;
+    }
+    .rating-option {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--dark);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: white;
+    }
+    .rating-option:has(input:checked) {
+      background: var(--blue);
+      color: white;
+      border-color: var(--blue);
+    }
+    .rating-option input[type="radio"] {
+      display: none;
+    }
+    .split-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    .rating-panel {
+      border: 2px solid var(--blue);
+      border-radius: 10px;
+      padding: 1rem;
+      background: #fff;
+      position: sticky;
+      top: 0.5rem;
+    }
+    .rating-table {
+      width: 100%;
+      margin: clamp(1.5rem, 3vw, 2.5rem) 0;
+      border-collapse: collapse;
+      font-size: clamp(0.75rem, 1.3vw, 1rem);
+    }
+    .rating-table th, .rating-table td {
+      border: 1px solid #ccc;
+      padding: clamp(0.5rem, 1.2vw, 0.9rem);
+      text-align: center;
+      color: var(--dark);
+    }
+    .rating-table th { 
+      background: var(--orange); 
+      color: white; 
+    }
+    .selection-count {
+      text-align: center;
+      font-size: 1.1rem;
+      margin: 1rem 0;
+      color: var(--orange);
+      font-weight: 600;
+    }
+    .additional-feedback {
+      margin: 1.5rem 0;
+    }
+    .additional-feedback label {
+      display: block;
+      color: var(--orange);
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      line-height: 1.5;
+    }
+    .additional-feedback textarea {
+      width: 100%;
+      min-height: 110px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 0.8rem;
+      background: var(--light);
+      color: var(--dark);
+      resize: vertical;
+      font-size: 1rem;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: clamp(2rem, 5vw, 3.5rem);
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    button {
+      padding: clamp(0.75rem, 2vw, 1rem) clamp(2rem, 5vw, 3rem);
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-weight: 600;
+    }
+    button:hover { 
+      transform: translateY(-2px); 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
+    }
+    .prev { background: #555; color: white; }
+    .next, .submit { background: var(--orange); color: white; }
+    .btn-outline {
+      background: white;
+      color: var(--blue);
+      border: 2px solid var(--blue);
+    }
+    .json-display {
+      background: #f5f5f5;
+      border: 2px solid var(--blue);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      display: none;
+    }
+    .json-display.active {
+      display: block;
+    }
+    .json-display h3 {
+      color: var(--blue);
+      margin-bottom: 1rem;
+    }
+    .json-display pre {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .copy-success {
+      color: green;
+      font-weight: bold;
+      margin-top: 10px;
+      display: none;
+    }
+    .score-guide {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 2px solid #d9e1ee;
+    }
+    .score-guide h3 {
+      color: var(--blue);
+      margin-bottom: 0.8rem;
+      font-size: 1.2rem;
+    }
+    .score-line {
+      width: 100%;
+      height: 3px;
+      background: var(--blue);
+      margin: 1rem 0 0.4rem;
+    }
+    .score-ticks {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+      color: var(--blue);
+    }
+    .score-ticks span {
+      text-align: center;
+    }
+    .score-labels {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--dark);
+      margin-top: 0.2rem;
+    }
+    .score-labels .left {
+      grid-column: 1;
+      text-align: left;
+      font-weight: 600;
+    }
+    .score-labels .center {
+      grid-column: 3;
+      text-align: center;
+      font-weight: 600;
+    }
+    .score-labels .right {
+      grid-column: 5;
+      text-align: right;
+      font-weight: 600;
+    }
+    @media (max-width: 900px) {
+      .container { width: 95%; margin: 0 auto 1rem; }
+      .split-layout { grid-template-columns: 1fr; }
+      .rating-panel { position: static; }
+      .nav { justify-content: center; }
+      button { width: 100%; max-width: 300px; }
+    }
+    @media (max-width: 600px) {
+      .rating-table { font-size: 0.7rem; }
+      .rating-table th, .rating-table td { padding: 0.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Interview Feedback Form</h1>
+  <div class="sub">Question Selection</div>
+  <hr />
+</div>
+
+<div class="container">
+
+  <!-- Slide 1: Introduction -->
+  <div class="slide active" id="s1">
+    <div class="intro">
+      <h2>What Is This Guide?</h2>
+      <p>This guide incorporates Core Competencies and Skill Based questions to help you assess candidates for both role and Tillamook alignment.</p>
+      <p>Use the links below to open your assigned interview guide, then return here to select the questions you asked and record your scores.</p>
+      <p>Please submit this form within one business day of completing your interview.</p>
+    </div>
+
+    <div style="background: white; border: 2px solid var(--blue); border-radius: 10px; padding: 1.5rem; margin: 1.5rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+      <div>
+        <label style="display: block; font-weight: 600; color: var(--orange); margin-bottom: 0.4rem;">Candidate Name</label>
+        <div id="info_candidate" style="width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; background: #f5f7fa; min-height: 2.5rem;">-</div>
+      </div>
+      <div>
+        <label style="display: block; font-weight: 600; color: var(--orange); margin-bottom: 0.4rem;">Position</label>
+        <div id="info_position" style="width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; background: #f5f7fa; min-height: 2.5rem;">-</div>
+      </div>
+      <div>
+        <label style="display: block; font-weight: 600; color: var(--orange); margin-bottom: 0.4rem;">Interviewer Name</label>
+        <div id="info_interviewer" style="width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; background: #f5f7fa; min-height: 2.5rem;">-</div>
+      </div>
+    </div>
+
+    <div class="intro">
+      <h2>Interview Guides</h2>
+      <p><strong>Select an interview guide:</strong></p>
+      <ul style="margin: 1rem 0 1rem 2rem; line-height: 2;">
+        <li><a href="#" style="color: var(--blue); font-weight: 600;">Interview Guide 1</a></li>
+        <li><a href="#" style="color: var(--blue); font-weight: 600;">Interview Guide 2</a></li>
+        <li><a href="#" style="color: var(--blue); font-weight: 600;">Interview Guide 3</a></li>
+        <li><a href="#" style="color: var(--blue); font-weight: 600;">Interview Guide 4</a></li>
+      </ul>
+
+      <div class="score-guide">
+        <h3>How To Score This Form</h3>
+        <div class="score-line"></div>
+        <div class="score-ticks">
+          <span>5</span>
+          <span>4</span>
+          <span>3</span>
+          <span>2</span>
+          <span>1</span>
+        </div>
+        <div class="score-labels">
+          <div class="left">Strong evidence of competency</div>
+          <div class="center">Average</div>
+          <div class="right">No evidence of competency</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav">
+      <button class="next" onclick="nextSlide(1)">Next →</button>
+    </div>
+  </div>
+
+  <!-- Slide 2: Skill Based Questions -->
+  <div class="slide" id="s2">
+    <h2>Skill Based Questions</h2>
+    <p style="margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--dark);">Select the questions below you asked from your assigned interview guide:</p>
+    
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_0" checked onchange="toggleRating(this, 'rating_0')">
+              <span>How does your experience relate to this position?</span>
+            </label>
+            <div class="question-rating" id="rating_0" style="display:flex">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_0_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_0_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_0_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_0_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_0_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_1" checked onchange="toggleRating(this, 'rating_1')">
+              <span>Can you give me an example of your system experience using [insert system] to solve [specific work example]?</span>
+            </label>
+            <div class="question-rating" id="rating_1" style="display:flex">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_1_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_1_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_1_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_1_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_1_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_2"  onchange="toggleRating(this, 'rating_2')">
+              <span>What technical skills do you consider your strongest assets?</span>
+            </label>
+            <div class="question-rating" id="rating_2" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_2_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_2_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_2_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_2_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_2_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_3"  onchange="toggleRating(this, 'rating_3')">
+              <span>Tell me about a time you had to learn a new technology or tool quickly.</span>
+            </label>
+            <div class="question-rating" id="rating_3" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_3_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_3_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_3_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_3_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_3_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_4"  onchange="toggleRating(this, 'rating_4')">
+              <span>Describe your experience with [specific software/tool relevant to position].</span>
+            </label>
+            <div class="question-rating" id="rating_4" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_4_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_4_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_4_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_4_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_4_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_5"  onchange="toggleRating(this, 'rating_5')">
+              <span>How do you stay current with industry trends and developments?</span>
+            </label>
+            <div class="question-rating" id="rating_5" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_5_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_5_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_5_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_5_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_5_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_6"  onchange="toggleRating(this, 'rating_6')">
+              <span>Walk me through a complex project you completed from start to finish.</span>
+            </label>
+            <div class="question-rating" id="rating_6" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_6_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_6_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_6_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_6_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_6_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+
+    
+    <div class="selection-count" id="skillCount" style="margin-top: 1rem;">
+      0 questions selected
+    </div>
+
+    <div class="additional-feedback">
+      <label for="skill_additional_questions">Please list any additional questions you asked to help improve our interview guides for the future</label>
+      <textarea id="skill_additional_questions" name="skill_additional_questions"></textarea>
+    </div>
+
+    <div class="nav">
+      <button class="prev" onclick="prevSlide(2)">← Prev</button>
+      <button class="next" onclick="nextSlide(2)">Next →</button>
+    </div>
+  </div>
+
+  <!-- Slide 3: Competency Questions -->
+  <div class="slide" id="s3">
+    <h2>Competency Questions</h2>
+    <p style="margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--dark);">Select the questions below you asked from your assigned interview guide:</p>
+    
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_7" checked onchange="toggleRating(this, 'rating_7')">
+              <span>Communicates Effectively: Can you tell me about a time you had to deliver a technical presentation to a different department without the same knowledge/language?</span>
+            </label>
+            <div class="question-rating" id="rating_7" style="display:flex">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_7_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_7_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_7_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_7_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_7_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_8" checked onchange="toggleRating(this, 'rating_8')">
+              <span>Decision Quality: Describe a time you had to make a recommendation and gather a lot of information in a short time frame.</span>
+            </label>
+            <div class="question-rating" id="rating_8" style="display:flex">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_8_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_8_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_8_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_8_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_8_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_9" checked onchange="toggleRating(this, 'rating_9')">
+              <span>Courage: Describe a time when you proposed an opposing idea to a leader above your job level.</span>
+            </label>
+            <div class="question-rating" id="rating_9" style="display:flex">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_9_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_9_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_9_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_9_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_9_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_10"  onchange="toggleRating(this, 'rating_10')">
+              <span>Problem Solving: Tell me about a challenging problem you faced and how you solved it.</span>
+            </label>
+            <div class="question-rating" id="rating_10" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_10_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_10_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_10_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_10_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_10_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_11"  onchange="toggleRating(this, 'rating_11')">
+              <span>Leadership: Describe a situation where you had to lead a team through a difficult situation.</span>
+            </label>
+            <div class="question-rating" id="rating_11" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_11_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_11_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_11_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_11_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_11_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_12"  onchange="toggleRating(this, 'rating_12')">
+              <span>Adaptability: Give an example of when you had to adjust to significant changes at work.</span>
+            </label>
+            <div class="question-rating" id="rating_12" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_12_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_12_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_12_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_12_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_12_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_13"  onchange="toggleRating(this, 'rating_13')">
+              <span>Time Management: How do you prioritize when you have multiple urgent tasks?</span>
+            </label>
+            <div class="question-rating" id="rating_13" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_13_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_13_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_13_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_13_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_13_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+
+    
+    <div class="selection-count" id="compCount" style="margin-top: 1rem;">
+      0 questions selected
+    </div>
+
+    <div class="additional-feedback">
+      <label for="comp_additional_questions">Please list any additional questions you asked to help improve our interview guides for the future</label>
+      <textarea id="comp_additional_questions" name="comp_additional_questions"></textarea>
+    </div>
+
+    <div class="nav">
+      <button class="prev" onclick="prevSlide(3)">← Prev</button>
+      <button class="next" onclick="nextSlide(3)">Next →</button>
+    </div>
+  </div>
+
+  <!-- Slide 4: Candidacy Decision -->
+  <div class="slide" id="s4">
+    <h2>Candidacy Decision</h2>
+
+    <div class="intro" style="max-width: 600px; margin: 2rem auto;">
+      <p style="font-size: 1.15rem; font-weight: 600; color: var(--dark); margin-bottom: 1.5rem;">Do you support this individual's candidacy for this position?</p>
+
+      <div style="display: flex; gap: 1.5rem; margin-bottom: 2rem;">
+        <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 1.1rem; cursor: pointer; font-weight: 600;">
+          <input type="radio" name="candidacy" value="Yes" style="transform: scale(1.4);">
+          Yes
+        </label>
+        <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 1.1rem; cursor: pointer; font-weight: 600;">
+          <input type="radio" name="candidacy" value="No" style="transform: scale(1.4);">
+          No
+        </label>
+      </div>
+
+      <div class="additional-feedback">
+        <label for="candidacy_comments">Additional Comments</label>
+        <textarea id="candidacy_comments" name="candidacy_comments"></textarea>
+      </div>
+    </div>
+
+    <div class="nav">
+      <button class="prev" onclick="prevSlide(4)">← Prev</button>
+      <button class="next" onclick="nextSlide(4)">Next →</button>
+    </div>
+  </div>
+
+  <!-- Slide 5: Review & Generate JSON -->
+  <div class="slide" id="s5">
+    <h2>Review & Generate Output</h2>
+    
+    <div class="selection-count" id="totalCount" style="margin: 2rem 0; font-size: 1.3rem;">
+      Total: 0 questions selected
+    </div>
+
+    <div style="display: flex; gap: 1rem; justify-content: center; margin: 2rem 0; flex-wrap: wrap;">
+      <button class="btn-outline" onclick="selectAll()">✓ Select All Questions</button>
+      <button class="btn-outline" onclick="deselectAll()">✗ Deselect All</button>
+      <button class="btn-outline" onclick="selectDefaults()">↺ Reset to Defaults</button>
+    </div>
+
+    <div class="json-display active">
+      <h3>📋 Selected Questions & Ratings JSON</h3>
+      <p>Click "Generate JSON" to create the output, then copy to Power Automate:</p>
+      <pre id="jsonOutput" style="min-height: 100px;">Click "Generate JSON" to see output...</pre>
+      <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
+        <button class="submit" onclick="generateJSON()">📋 Generate JSON</button>
+        <button class="submit" onclick="copyToClipboard()">📋 Copy to Clipboard</button>
+        <button class="submit" onclick="submitToAutomate()" style="background: var(--green, #28a745);">✉️ Submit to Power Automate</button>
+      </div>
+      <div class="copy-success" id="copySuccess">✅ Copied to clipboard!</div>
+      <div class="copy-success" id="submitSuccess" style="background-color: #4caf50; display: none;">✅ Submitted to Power Automate!</div>
+    </div>
+
+    <div class="nav">
+      <button class="prev" onclick="prevSlide(5)">← Prev</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let current = 1;
+  const total = 5;
+  const allQuestions = [{"category": "Skill Based", "text": "How does your experience relate to this position?", "default": true}, {"category": "Skill Based", "text": "Can you give me an example of your system experience using [insert system] to solve [specific work example]?", "default": true}, {"category": "Skill Based", "text": "What technical skills do you consider your strongest assets?", "default": false}, {"category": "Skill Based", "text": "Tell me about a time you had to learn a new technology or tool quickly.", "default": false}, {"category": "Skill Based", "text": "Describe your experience with [specific software/tool relevant to position].", "default": false}, {"category": "Skill Based", "text": "How do you stay current with industry trends and developments?", "default": false}, {"category": "Skill Based", "text": "Walk me through a complex project you completed from start to finish.", "default": false}, {"category": "Competency", "text": "Communicates Effectively: Can you tell me about a time you had to deliver a technical presentation to a different department without the same knowledge/language?", "default": true}, {"category": "Competency", "text": "Decision Quality: Describe a time you had to make a recommendation and gather a lot of information in a short time frame.", "default": true}, {"category": "Competency", "text": "Courage: Describe a time when you proposed an opposing idea to a leader above your job level.", "default": true}, {"category": "Competency", "text": "Problem Solving: Tell me about a challenging problem you faced and how you solved it.", "default": false}, {"category": "Competency", "text": "Leadership: Describe a situation where you had to lead a team through a difficult situation.", "default": false}, {"category": "Competency", "text": "Adaptability: Give an example of when you had to adjust to significant changes at work.", "default": false}, {"category": "Competency", "text": "Time Management: How do you prioritize when you have multiple urgent tasks?", "default": false}];
+  const POWER_AUTOMATE_URL = 'https://defaultd7a24e4807da410e982786fbeed880.f9.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/b35041ad013749b3afab15eb7eda4a02/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=PERCnOrQUh8nPY6d2U5fVoLR_WAowD9AeJ2dJQCS-Rc';
+  const params = new URLSearchParams(location.search);
+  const candidateFromLink = params.get('candidate') || params.get('candidateName') || params.get('candidate_name') || '';
+  const positionFromLink = params.get('position') || params.get('job') || params.get('jobTitle') || params.get('job_title') || '';
+  const interviewerFromLink = params.get('interviewer') || params.get('interviewerName') || params.get('interviewer_name') || '';
+  const todayInterviewDate = new Date().toISOString().split('T')[0];
+
+  const infoCandidateEl = document.getElementById('info_candidate');
+  const infoPositionEl = document.getElementById('info_position');
+  const infoInterviewerEl = document.getElementById('info_interviewer');
+
+  if (infoCandidateEl) infoCandidateEl.textContent = candidateFromLink || '—';
+  if (infoPositionEl) infoPositionEl.textContent = positionFromLink || '—';
+  if (infoInterviewerEl) infoInterviewerEl.textContent = interviewerFromLink || '—';
+  
+  function showSlide(n) {
+    document.querySelectorAll('.slide').forEach(s => {
+      s.classList.remove('active');
+      s.style.opacity = '0';
+      s.style.visibility = 'hidden';
+    });
+    const target = document.getElementById(`s${n}`);
+    target.classList.add('active');
+    target.style.opacity = '1';
+    target.style.visibility = 'visible';
+    current = n;
+  }
+
+  function nextSlide(from) { 
+    if (from === current) showSlide(current + 1); 
+  }
+  
+  function prevSlide(from) { 
+    if (from === current) showSlide(current - 1); 
+  }
+  
+  function updateSelectionCount() {
+    // Get all selected checkboxes
+    const allChecked = document.querySelectorAll('input[type="checkbox"]:checked');
+    
+    // Update section-specific counts
+    const skillCount = document.querySelectorAll('#s2 input[type="checkbox"]:checked').length;
+    const compCount = document.querySelectorAll('#s3 input[type="checkbox"]:checked').length;
+    
+    // Update displays if they exist
+    const skillEl = document.getElementById('skillCount');
+    const compEl = document.getElementById('compCount');
+    const totalEl = document.getElementById('totalCount');
+    
+    if (skillEl) skillEl.textContent = `${skillCount} question${skillCount !== 1 ? 's' : ''} selected`;
+    if (compEl) compEl.textContent = `${compCount} question${compCount !== 1 ? 's' : ''} selected`;
+    if (totalEl) totalEl.textContent = `Total: ${allChecked.length} question${allChecked.length !== 1 ? 's' : ''} selected`;
+  }
+  
+  function selectAll() {
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = true);
+    updateSelectionCount();
+  }
+  
+  function deselectAll() {
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+    updateSelectionCount();
+  }
+  
+  function selectDefaults() {
+    // Store which questions were default
+    const defaults = [true, true, false, false, false, false, false, true, true, true, false, false, false, false];
+    document.querySelectorAll('input[type="checkbox"]').forEach((cb, index) => {
+      cb.checked = defaults[index] || false;
+    });
+    updateSelectionCount();
+  }
+  
+  function toggleRating(checkbox, ratingId) {
+    const ratingDiv = document.getElementById(ratingId);
+    if (ratingDiv) ratingDiv.style.display = checkbox.checked ? 'flex' : 'none';
+    updateSelectionCount();
+  }
+
+  function generateJSON() {
+    const selectedQuestions = [];
+    document.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+      const index = parseInt(cb.value.replace('q_', ''));
+      const ratingInput = document.querySelector(`input[name="q_${index}_rating"]:checked`);
+      const q = Object.assign({}, allQuestions[index]);
+      q.rating = ratingInput ? parseInt(ratingInput.value) : null;
+      selectedQuestions.push(q);
+    });
+    
+    const candidacyInput = document.querySelector('input[name="candidacy"]:checked');
+    const candidacyComments = document.getElementById('candidacy_comments');
+
+    const jsonData = {
+      timestamp: new Date().toISOString(),
+      candidate: candidateFromLink,
+      position: positionFromLink,
+      interviewer: interviewerFromLink,
+      interviewDate: todayInterviewDate,
+      totalQuestionsSelected: selectedQuestions.length,
+      supportsCandidacy: candidacyInput ? candidacyInput.value : null,
+      additionalComments: candidacyComments ? candidacyComments.value : '',
+      selectedQuestions: selectedQuestions
+    };
+    
+    const jsonOutput = document.getElementById('jsonOutput');
+    jsonOutput.textContent = JSON.stringify(jsonData, null, 2);
+  }
+  
+  function copyToClipboard() {
+    const jsonOutput = document.getElementById('jsonOutput');
+    const copySuccess = document.getElementById('copySuccess');
+    
+    navigator.clipboard.writeText(jsonOutput.textContent).then(() => {
+      copySuccess.style.display = 'block';
+      setTimeout(() => {
+        copySuccess.style.display = 'none';
+      }, 3000);
+    }).catch(err => {
+      alert('Failed to copy: ' + err);
+    });
+  }
+  
+  function submitToAutomate() {
+    const jsonOutput = document.getElementById('jsonOutput');
+    const submitSuccess = document.getElementById('submitSuccess');
+    
+    if (!jsonOutput.textContent || jsonOutput.textContent.includes('Click "Generate JSON"')) {
+      alert('Please generate the JSON first.');
+      return;
+    }
+    
+    try {
+      const jsonData = JSON.parse(jsonOutput.textContent);
+      
+      fetch(POWER_AUTOMATE_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(jsonData)
+      })
+      .then(response => {
+        if (response.ok) {
+          submitSuccess.style.display = 'block';
+          setTimeout(() => {
+            submitSuccess.style.display = 'none';
+          }, 3000);
+        } else {
+          alert('Failed to submit. Status: ' + response.status);
+        }
+      })
+      .catch(err => {
+        alert('Error submitting to Power Automate: ' + err);
+      });
+    } catch (err) {
+      alert('Invalid JSON: ' + err);
+    }
+  }
+  
+  // Initialize
+  showSlide(1);
+  updateSelectionCount();
+</script>
+</body>
+</html>

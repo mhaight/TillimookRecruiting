@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Question Bank | Tillamook</title>
+  <title>Interview Feedback Form | Tillamook</title>
   <style>
     @import 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600&family=Ultra:ital,wght@0,400&display=swap';
     
@@ -356,7 +356,7 @@
 <body>
 
 <div class="header">
-  <h1>Question Bank</h1>
+  <h1>Interview Feedback Form</h1>
   <div class="sub">Question Selection</div>
   <hr />
 </div>
@@ -366,7 +366,7 @@
   <!-- Slide 1: Introduction -->
   <div class="slide active" id="s1">
     <div class="intro">
-      <h2>What Is This Guide?</h2>
+      <h2>What Is This Form?</h2>
       <p>This guide incorporates Skill Based, Core Competency, and Shared Values questions to help you assess candidates for both role and Tillamook alignment.</p>
       <p>Use the links below to open your assigned interview guide, then return here to select the questions you asked and record your scores.</p>
       <p>Please submit this form within one business day of completing your interview.</p>
@@ -384,6 +384,14 @@
       <div>
         <label style="display: block; font-weight: 600; color: var(--orange); margin-bottom: 0.4rem;">Interviewer Name</label>
         <div id="info_interviewer" style="width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; background: #f5f7fa; min-height: 2.5rem;">-</div>
+      </div>
+      <div>
+        <label style="display: block; font-weight: 600; color: var(--orange); margin-bottom: 0.4rem;">Recruiter</label>
+        <div id="info_recruiter" style="width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; background: #f5f7fa; min-height: 2.5rem;">-</div>
+      </div>
+      <div>
+        <label style="display: block; font-weight: 600; color: var(--orange); margin-bottom: 0.4rem;">Hiring Manager</label>
+        <div id="info_hiringManager" style="width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; background: #f5f7fa; min-height: 2.5rem;">-</div>
       </div>
     </div>
 
@@ -408,9 +416,9 @@
           <span>1</span>
         </div>
         <div class="score-labels">
-          <div class="left">Strong evidence of competency</div>
+          <div class="left">Strong evidence of skill, value or competency</div>
           <div class="center">Average</div>
-          <div class="right">No evidence of competency</div>
+          <div class="right">No evidence of skill, value or competency</div>
         </div>
       </div>
     </div>
@@ -420,11 +428,13 @@
     </div>
   </div>
 
-  <!-- Slide 2: Skill Based Questions -->
+  <!-- Slide 2: Questions -->
   <div class="slide" id="s2">
-    <h2>Skill Based Questions</h2>
+    <h2>Interview Questions</h2>
     <p style="margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--dark);">Select the questions below you asked from your assigned interview guide:</p>
-    
+
+    <div id="section_skill">
+      <h3 style="color: var(--blue); font-size: 1.35rem; margin: 0 0 1rem; padding-bottom: 0.5rem; border-bottom: 3px solid var(--orange);">Skill Based</h3>
         <div class="question-item">
           <div class="question-row">
             <label class="question-label">
@@ -538,27 +548,28 @@
           </div>
         </div>
 
-    
-    <div class="selection-count" id="skillCount" style="margin-top: 1rem;">
-      0 questions selected
+      <div class="selection-count" id="skillCount" style="margin-top: 1rem;">0 questions selected</div>
+      <div class="section-score" style="margin: 1.5rem 0; padding: 1rem; background: #f0f4ff; border-radius: 10px; border: 2px solid var(--blue);">
+        <div style="font-weight: 600; color: var(--blue); margin-bottom: 0.75rem; font-size: 1.05rem;">Overall Skill Based Section Score:</div>
+        <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+          <span class="rating-label">Score:</span>
+          <label class="rating-option"><input type="radio" name="sectionScore_skill" value="5">5</label>
+          <label class="rating-option"><input type="radio" name="sectionScore_skill" value="4">4</label>
+          <label class="rating-option"><input type="radio" name="sectionScore_skill" value="3">3</label>
+          <label class="rating-option"><input type="radio" name="sectionScore_skill" value="2">2</label>
+          <label class="rating-option"><input type="radio" name="sectionScore_skill" value="1">1</label>
+        </div>
+      </div>
+      <div class="additional-feedback">
+        <label for="skill_additional_questions">Please list any additional questions you asked to help improve our interview guides for the future</label>
+        <textarea id="skill_additional_questions" name="skill_additional_questions"></textarea>
+      </div>
     </div>
 
-    <div class="additional-feedback">
-      <label for="skill_additional_questions">Please list any additional questions you asked to help improve our interview guides for the future</label>
-      <textarea id="skill_additional_questions" name="skill_additional_questions"></textarea>
-    </div>
+    <hr style="border: none; border-top: 3px solid #ddd; margin: 2.5rem 0;">
 
-    <div class="nav">
-      <button class="prev" onclick="prevSlide(2)">← Prev</button>
-      <button class="next" onclick="nextSlide(2)">Next →</button>
-    </div>
-  </div>
-
-  <!-- Slide 3: Competency Questions -->
-  <div class="slide" id="s3">
-    <h2>Competency Questions</h2>
-    <p style="margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--dark);">Select the questions below you asked from your assigned interview guide:</p>
-    
+    <div id="section_comp">
+      <h3 style="color: var(--blue); font-size: 1.35rem; margin: 0 0 1rem; padding-bottom: 0.5rem; border-bottom: 3px solid var(--orange);">Competency</h3>
         <div class="question-item">
           <div class="question-row">
             <label class="question-label">
@@ -672,38 +683,190 @@
           </div>
         </div>
 
-    
-    <div class="selection-count" id="compCount" style="margin-top: 1rem;">
-      0 questions selected
+      <div class="selection-count" id="compCount" style="margin-top: 1rem;">0 questions selected</div>
+      <div class="section-score" style="margin: 1.5rem 0; padding: 1rem; background: #f0f4ff; border-radius: 10px; border: 2px solid var(--blue);">
+        <div style="font-weight: 600; color: var(--blue); margin-bottom: 0.75rem; font-size: 1.05rem;">Overall Competency Section Score:</div>
+        <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+          <span class="rating-label">Score:</span>
+          <label class="rating-option"><input type="radio" name="sectionScore_comp" value="5">5</label>
+          <label class="rating-option"><input type="radio" name="sectionScore_comp" value="4">4</label>
+          <label class="rating-option"><input type="radio" name="sectionScore_comp" value="3">3</label>
+          <label class="rating-option"><input type="radio" name="sectionScore_comp" value="2">2</label>
+          <label class="rating-option"><input type="radio" name="sectionScore_comp" value="1">1</label>
+        </div>
+      </div>
+      <div class="additional-feedback">
+        <label for="comp_additional_questions">Please list any additional questions you asked to help improve our interview guides for the future</label>
+        <textarea id="comp_additional_questions" name="comp_additional_questions"></textarea>
+      </div>
     </div>
 
-    <div class="additional-feedback">
-      <label for="comp_additional_questions">Please list any additional questions you asked to help improve our interview guides for the future</label>
-      <textarea id="comp_additional_questions" name="comp_additional_questions"></textarea>
+    <hr style="border: none; border-top: 3px solid #ddd; margin: 2.5rem 0;">
+
+    <div id="section_values">
+      <h3 style="color: var(--blue); font-size: 1.35rem; margin: 0 0 1rem; padding-bottom: 0.5rem; border-bottom: 3px solid var(--orange);">Shared Values</h3>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_14"  onchange="toggleRating(this, 'rating_14')">
+              <span>All Values: At Tillamook our culture is really important to us, can you tell me if you explored our Shared Values on our website and which one resonated with you the most and why?</span>
+            </label>
+            <div class="question-rating" id="rating_14" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_14_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_14_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_14_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_14_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_14_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_15"  onchange="toggleRating(this, 'rating_15')">
+              <span>One Team: Tell me about a time you had to collaborate with multiple cross-functional teams to accomplish a task or project.</span>
+            </label>
+            <div class="question-rating" id="rating_15" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_15_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_15_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_15_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_15_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_15_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_16"  onchange="toggleRating(this, 'rating_16')">
+              <span>Integrity: Describe a time when you had to make an ethical decision in the workplace.</span>
+            </label>
+            <div class="question-rating" id="rating_16" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_16_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_16_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_16_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_16_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_16_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_17"  onchange="toggleRating(this, 'rating_17')">
+              <span>Excellence: Tell me about a time you went above and beyond to ensure quality.</span>
+            </label>
+            <div class="question-rating" id="rating_17" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_17_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_17_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_17_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_17_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_17_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_18"  onchange="toggleRating(this, 'rating_18')">
+              <span>Innovation: Give an example of when you suggested a new approach or idea.</span>
+            </label>
+            <div class="question-rating" id="rating_18" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_18_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_18_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_18_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_18_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_18_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_19"  onchange="toggleRating(this, 'rating_19')">
+              <span>Customer Focus: How do you ensure customer satisfaction in your work?</span>
+            </label>
+            <div class="question-rating" id="rating_19" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_19_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_19_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_19_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_19_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_19_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+
+      <div class="selection-count" id="valuesCount" style="margin-top: 1rem;">0 questions selected</div>
+      <div class="section-score" style="margin: 1.5rem 0; padding: 1rem; background: #f0f4ff; border-radius: 10px; border: 2px solid var(--blue);">
+        <div style="font-weight: 600; color: var(--blue); margin-bottom: 0.75rem; font-size: 1.05rem;">Overall Shared Values Section Score:</div>
+        <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+          <span class="rating-label">Score:</span>
+          <label class="rating-option"><input type="radio" name="sectionScore_values" value="5">5</label>
+          <label class="rating-option"><input type="radio" name="sectionScore_values" value="4">4</label>
+          <label class="rating-option"><input type="radio" name="sectionScore_values" value="3">3</label>
+          <label class="rating-option"><input type="radio" name="sectionScore_values" value="2">2</label>
+          <label class="rating-option"><input type="radio" name="sectionScore_values" value="1">1</label>
+        </div>
+      </div>
+      <div class="additional-feedback">
+        <label for="values_additional_questions">Please list any additional questions you asked to help improve our interview guides for the future</label>
+        <textarea id="values_additional_questions" name="values_additional_questions"></textarea>
+      </div>
     </div>
 
     <div class="nav">
-      <button class="prev" onclick="prevSlide(3)">← Prev</button>
-      <button class="next" onclick="nextSlide(3)">Next →</button>
+      <button class="prev" onclick="prevSlide(2)">← Prev</button>
+      <button class="next" onclick="nextSlide(2)">Next →</button>
     </div>
   </div>
 
-  <!-- Slide 4: Candidacy Decision -->
-  <div class="slide" id="s4">
+  <!-- Slide 3: Candidacy Decision -->
+  <div class="slide" id="s3">
     <h2>Candidacy Decision</h2>
 
     <div class="intro" style="max-width: 600px; margin: 2rem auto;">
       <p style="font-size: 1.15rem; font-weight: 600; color: var(--dark); margin-bottom: 1.5rem;">Do you support this individual's candidacy for this position?</p>
 
-      <div style="display: flex; gap: 1.5rem; margin-bottom: 2rem;">
+      <div style="display: flex; gap: 1.5rem; margin-bottom: 1.5rem;">
         <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 1.1rem; cursor: pointer; font-weight: 600;">
-          <input type="radio" name="candidacy" value="Yes" style="transform: scale(1.4);">
+          <input type="radio" name="candidacy" value="Yes" style="transform: scale(1.4);" onchange="updateCandidacyVisibility()">
           Yes
         </label>
         <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 1.1rem; cursor: pointer; font-weight: 600;">
-          <input type="radio" name="candidacy" value="No" style="transform: scale(1.4);">
+          <input type="radio" name="candidacy" value="No" style="transform: scale(1.4);" onchange="updateCandidacyVisibility()">
           No
         </label>
+        <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 1.1rem; cursor: pointer; font-weight: 600;">
+          <input type="radio" name="candidacy" value="Maybe" style="transform: scale(1.4);" onchange="updateCandidacyVisibility()">
+          Maybe
+        </label>
+      </div>
+
+      <div id="decisionSections" style="display: none; margin: 0 0 1.5rem; padding: 1.25rem; background: #fff8e1; border-radius: 10px; border: 2px solid var(--orange);">
+        <p style="font-weight: 600; color: var(--dark); margin-bottom: 1rem; font-size: 1.05rem;">Which section drove this decision?</p>
+        <div style="display: grid; grid-template-columns: 1fr auto; gap: 0.75rem 2rem; align-items: center;">
+          <label style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer; font-size: 1rem; font-weight: 500;">
+            <input type="checkbox" name="decisionSection" value="Skill Based" checked style="transform: scale(1.2);">
+            Skill Based
+          </label>
+          <span style="font-weight: 600; color: var(--blue); white-space: nowrap; font-size: 1rem;">Score: <span id="decisionSkillScore" style="font-size: 1.2rem;">—</span></span>
+          <label style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer; font-size: 1rem; font-weight: 500;">
+            <input type="checkbox" name="decisionSection" value="Competency" checked style="transform: scale(1.2);">
+            Competency
+          </label>
+          <span style="font-weight: 600; color: var(--blue); white-space: nowrap; font-size: 1rem;">Score: <span id="decisionCompScore" style="font-size: 1.2rem;">—</span></span>
+          <label style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer; font-size: 1rem; font-weight: 500;">
+            <input type="checkbox" name="decisionSection" value="Shared Values" checked style="transform: scale(1.2);">
+            Shared Values
+          </label>
+          <span style="font-weight: 600; color: var(--blue); white-space: nowrap; font-size: 1rem;">Score: <span id="decisionValuesScore" style="font-size: 1.2rem;">—</span></span>
+        </div>
       </div>
 
       <div class="additional-feedback">
@@ -713,13 +876,13 @@
     </div>
 
     <div class="nav">
-      <button class="prev" onclick="prevSlide(4)">← Prev</button>
-      <button class="next" onclick="nextSlide(4)">Next →</button>
+      <button class="prev" onclick="prevSlide(3)">← Prev</button>
+      <button class="next" onclick="nextSlide(3)">Next →</button>
     </div>
   </div>
 
-  <!-- Slide 5: Review & Generate JSON -->
-  <div class="slide" id="s5">
+  <!-- Slide 4: Review & Generate JSON -->
+  <div class="slide" id="s4">
     <h2>Review & Generate Output</h2>
     
     <div class="selection-count" id="totalCount" style="margin: 2rem 0; font-size: 1.3rem;">
@@ -740,7 +903,7 @@
     </div>
 
     <div class="nav">
-      <button class="prev" onclick="prevSlide(5)">← Prev</button>
+      <button class="prev" onclick="prevSlide(4)">← Prev</button>
     </div>
   </div>
 
@@ -748,22 +911,28 @@
 
 <script>
   let current = 1;
-  const total = 5;
-  const allQuestions = [{"category": "Skill Based", "text": "How does your experience relate to this position?", "default": false}, {"category": "Skill Based", "text": "Can you give me an example of your system experience using [insert system] to solve [specific work example]?", "default": false}, {"category": "Skill Based", "text": "What technical skills do you consider your strongest assets?", "default": false}, {"category": "Skill Based", "text": "Tell me about a time you had to learn a new technology or tool quickly.", "default": false}, {"category": "Skill Based", "text": "Describe your experience with [specific software/tool relevant to position].", "default": false}, {"category": "Skill Based", "text": "How do you stay current with industry trends and developments?", "default": false}, {"category": "Skill Based", "text": "Walk me through a complex project you completed from start to finish.", "default": false}, {"category": "Competency", "text": "Communicates Effectively: Can you tell me about a time you had to deliver a technical presentation to a different department without the same knowledge/language?", "default": false}, {"category": "Competency", "text": "Decision Quality: Describe a time you had to make a recommendation and gather a lot of information in a short time frame.", "default": false}, {"category": "Competency", "text": "Courage: Describe a time when you proposed an opposing idea to a leader above your job level.", "default": false}, {"category": "Competency", "text": "Problem Solving: Tell me about a challenging problem you faced and how you solved it.", "default": false}, {"category": "Competency", "text": "Leadership: Describe a situation where you had to lead a team through a difficult situation.", "default": false}, {"category": "Competency", "text": "Adaptability: Give an example of when you had to adjust to significant changes at work.", "default": false}, {"category": "Competency", "text": "Time Management: How do you prioritize when you have multiple urgent tasks?", "default": false}];
+  const total = 4;
+  const allQuestions = [{"category": "Skill Based", "text": "How does your experience relate to this position?", "default": false}, {"category": "Skill Based", "text": "Can you give me an example of your system experience using [insert system] to solve [specific work example]?", "default": false}, {"category": "Skill Based", "text": "What technical skills do you consider your strongest assets?", "default": false}, {"category": "Skill Based", "text": "Tell me about a time you had to learn a new technology or tool quickly.", "default": false}, {"category": "Skill Based", "text": "Describe your experience with [specific software/tool relevant to position].", "default": false}, {"category": "Skill Based", "text": "How do you stay current with industry trends and developments?", "default": false}, {"category": "Skill Based", "text": "Walk me through a complex project you completed from start to finish.", "default": false}, {"category": "Competency", "text": "Communicates Effectively: Can you tell me about a time you had to deliver a technical presentation to a different department without the same knowledge/language?", "default": false}, {"category": "Competency", "text": "Decision Quality: Describe a time you had to make a recommendation and gather a lot of information in a short time frame.", "default": false}, {"category": "Competency", "text": "Courage: Describe a time when you proposed an opposing idea to a leader above your job level.", "default": false}, {"category": "Competency", "text": "Problem Solving: Tell me about a challenging problem you faced and how you solved it.", "default": false}, {"category": "Competency", "text": "Leadership: Describe a situation where you had to lead a team through a difficult situation.", "default": false}, {"category": "Competency", "text": "Adaptability: Give an example of when you had to adjust to significant changes at work.", "default": false}, {"category": "Competency", "text": "Time Management: How do you prioritize when you have multiple urgent tasks?", "default": false}, {"category": "Shared Values", "text": "All Values: At Tillamook our culture is really important to us, can you tell me if you explored our Shared Values on our website and which one resonated with you the most and why?", "default": false}, {"category": "Shared Values", "text": "One Team: Tell me about a time you had to collaborate with multiple cross-functional teams to accomplish a task or project.", "default": false}, {"category": "Shared Values", "text": "Integrity: Describe a time when you had to make an ethical decision in the workplace.", "default": false}, {"category": "Shared Values", "text": "Excellence: Tell me about a time you went above and beyond to ensure quality.", "default": false}, {"category": "Shared Values", "text": "Innovation: Give an example of when you suggested a new approach or idea.", "default": false}, {"category": "Shared Values", "text": "Customer Focus: How do you ensure customer satisfaction in your work?", "default": false}];
   const POWER_AUTOMATE_URL = 'https://defaultd7a24e4807da410e982786fbeed880.f9.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/b35041ad013749b3afab15eb7eda4a02/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=PERCnOrQUh8nPY6d2U5fVoLR_WAowD9AeJ2dJQCS-Rc';
   const params = new URLSearchParams(location.search);
   const candidateFromLink = params.get('candidate') || params.get('candidateName') || params.get('candidate_name') || '';
   const positionFromLink = params.get('position') || params.get('job') || params.get('jobTitle') || params.get('job_title') || '';
   const interviewerFromLink = params.get('interviewer') || params.get('interviewerName') || params.get('interviewer_name') || '';
+  const recruiterFromLink = params.get('recruiter') || params.get('recruiterName') || params.get('recruiter_name') || '';
+  const hiringManagerFromLink = params.get('hiringManager') || params.get('hiring_manager') || params.get('hiringmanager') || '';
   const todayInterviewDate = new Date().toISOString().split('T')[0];
 
   const infoCandidateEl = document.getElementById('info_candidate');
   const infoPositionEl = document.getElementById('info_position');
   const infoInterviewerEl = document.getElementById('info_interviewer');
+  const infoRecruiterEl = document.getElementById('info_recruiter');
+  const infoHiringManagerEl = document.getElementById('info_hiringManager');
 
   if (infoCandidateEl) infoCandidateEl.textContent = candidateFromLink || '—';
   if (infoPositionEl) infoPositionEl.textContent = positionFromLink || '—';
   if (infoInterviewerEl) infoInterviewerEl.textContent = interviewerFromLink || '—';
+  if (infoRecruiterEl) infoRecruiterEl.textContent = recruiterFromLink || '—';
+  if (infoHiringManagerEl) infoHiringManagerEl.textContent = hiringManagerFromLink || '—';
   
   function showSlide(n) {
     document.querySelectorAll('.slide').forEach(s => {
@@ -776,6 +945,7 @@
     target.style.opacity = '1';
     target.style.visibility = 'visible';
     current = n;
+    if (n === 3) updateDecisionScores();
   }
 
   function nextSlide(from) { 
@@ -785,39 +955,63 @@
   function prevSlide(from) { 
     if (from === current) showSlide(current - 1); 
   }
-  
+
+  function updateCandidacyVisibility() {
+    const val = document.querySelector('input[name="candidacy"]:checked')?.value;
+    const panel = document.getElementById('decisionSections');
+    if (panel) {
+      panel.style.display = (val === 'No' || val === 'Maybe') ? 'block' : 'none';
+      if (panel.style.display !== 'none') updateDecisionScores();
+    }
+  }
+
+  function updateDecisionScores() {
+    const skillInput = document.querySelector('input[name="sectionScore_skill"]:checked');
+    const compInput = document.querySelector('input[name="sectionScore_comp"]:checked');
+    const valuesInput = document.querySelector('input[name="sectionScore_values"]:checked');
+    const skillEl = document.getElementById('decisionSkillScore');
+    const compEl = document.getElementById('decisionCompScore');
+    const valuesEl = document.getElementById('decisionValuesScore');
+    if (skillEl) skillEl.textContent = skillInput ? skillInput.value : '—';
+    if (compEl) compEl.textContent = compInput ? compInput.value : '—';
+    if (valuesEl) valuesEl.textContent = valuesInput ? valuesInput.value : '—';
+  }
+
   function updateSelectionCount() {
-    // Get all selected checkboxes
-    const allChecked = document.querySelectorAll('input[type="checkbox"]:checked');
+    // Get all selected question checkboxes
+    const allChecked = document.querySelectorAll('input[name="selected_questions"]:checked');
     
     // Update section-specific counts
-    const skillCount = document.querySelectorAll('#s2 input[type="checkbox"]:checked').length;
-    const compCount = document.querySelectorAll('#s3 input[type="checkbox"]:checked').length;
+    const skillCount = document.querySelectorAll('#section_skill input[name="selected_questions"]:checked').length;
+    const compCount = document.querySelectorAll('#section_comp input[name="selected_questions"]:checked').length;
+    const valuesCount = document.querySelectorAll('#section_values input[name="selected_questions"]:checked').length;
     
     // Update displays if they exist
     const skillEl = document.getElementById('skillCount');
     const compEl = document.getElementById('compCount');
+    const valuesEl = document.getElementById('valuesCount');
     const totalEl = document.getElementById('totalCount');
     
     if (skillEl) skillEl.textContent = `${skillCount} question${skillCount !== 1 ? 's' : ''} selected`;
     if (compEl) compEl.textContent = `${compCount} question${compCount !== 1 ? 's' : ''} selected`;
+    if (valuesEl) valuesEl.textContent = `${valuesCount} question${valuesCount !== 1 ? 's' : ''} selected`;
     if (totalEl) totalEl.textContent = `Total: ${allChecked.length} question${allChecked.length !== 1 ? 's' : ''} selected`;
   }
   
   function selectAll() {
-    document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = true);
+    document.querySelectorAll('input[name="selected_questions"]').forEach(cb => cb.checked = true);
     updateSelectionCount();
   }
   
   function deselectAll() {
-    document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+    document.querySelectorAll('input[name="selected_questions"]').forEach(cb => cb.checked = false);
     updateSelectionCount();
   }
   
   function selectDefaults() {
     // Store which questions were default
-    const defaults = [false, false, false, false, false, false, false, false, false, false, false, false, false, false];
-    document.querySelectorAll('input[type="checkbox"]').forEach((cb, index) => {
+    const defaults = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+    document.querySelectorAll('input[name="selected_questions"]').forEach((cb, index) => {
       cb.checked = defaults[index] || false;
     });
     updateSelectionCount();
@@ -831,7 +1025,7 @@
 
   function generateJSON() {
     const selectedQuestions = [];
-    document.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+    document.querySelectorAll('input[name="selected_questions"]:checked').forEach(cb => {
       const index = parseInt(cb.value.replace('q_', ''));
       const ratingInput = document.querySelector(`input[name="q_${index}_rating"]:checked`);
       const q = Object.assign({}, allQuestions[index]);
@@ -841,15 +1035,27 @@
     
     const candidacyInput = document.querySelector('input[name="candidacy"]:checked');
     const candidacyComments = document.getElementById('candidacy_comments');
+    const skillScoreInput = document.querySelector('input[name="sectionScore_skill"]:checked');
+    const compScoreInput = document.querySelector('input[name="sectionScore_comp"]:checked');
+    const valuesScoreInput = document.querySelector('input[name="sectionScore_values"]:checked');
 
     const jsonData = {
       timestamp: new Date().toISOString(),
       candidate: candidateFromLink,
       position: positionFromLink,
       interviewer: interviewerFromLink,
+      recruiter: recruiterFromLink,
+      hiringManager: hiringManagerFromLink,
       interviewDate: todayInterviewDate,
+      skillSectionScore: skillScoreInput ? parseInt(skillScoreInput.value) : null,
+      competencySectionScore: compScoreInput ? parseInt(compScoreInput.value) : null,
+      valuesSectionScore: valuesScoreInput ? parseInt(valuesScoreInput.value) : null,
       totalQuestionsSelected: selectedQuestions.length,
       supportsCandidacy: candidacyInput ? candidacyInput.value : null,
+      candidacyReason: candidacyComments ? candidacyComments.value : '',
+      decisionSections: (candidacyInput?.value === 'No' || candidacyInput?.value === 'Maybe')
+        ? Array.from(document.querySelectorAll('input[name="decisionSection"]:checked')).map(cb => cb.value)
+        : null,
       additionalComments: candidacyComments ? candidacyComments.value : '',
       selectedQuestions: selectedQuestions
     };

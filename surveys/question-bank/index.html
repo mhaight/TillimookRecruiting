@@ -51,7 +51,6 @@
       margin: 0.75rem auto; 
     }
     .container {
-      position: relative;
       width: 90%;
       max-width: 1400px;
       margin: 0 auto 2rem;
@@ -59,26 +58,15 @@
       color: var(--dark);
       border-radius: 16px;
       box-shadow: 0 20px 70px rgba(0,0,0,0.5);
-      flex: 1;
-      overflow: hidden;
-      min-height: 600px;
     }
     .slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
       padding: clamp(1.5rem, 3vw, 2.5rem);
-      overflow-y: auto;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.4s ease;
       box-sizing: border-box;
     }
-    .slide.active {
-      opacity: 1;
-      visibility: visible;
+    .section-divider {
+      border: none;
+      border-top: 4px solid var(--blue);
+      margin: 0;
     }
     h2 {
       color: var(--blue);
@@ -363,8 +351,8 @@
 
 <div class="container">
 
-  <!-- Slide 1: Introduction -->
-  <div class="slide active" id="s1">
+  <!-- Section 1: Introduction -->
+  <div class="slide" id="s1">
     <div class="intro">
       <h2>What Is This Form?</h2>
       <p>This guide incorporates Skill Based, Core Competency, and Shared Values questions to help you assess candidates for both role and Tillamook alignment.</p>
@@ -420,12 +408,11 @@
       </div>
     </div>
 
-    <div class="nav">
-      <button class="next" onclick="nextSlide(1)">Next →</button>
-    </div>
   </div>
 
-  <!-- Slide 2: Questions -->
+  <hr class="section-divider">
+
+  <!-- Section 2: Questions -->
   <div class="slide" id="s2">
     <h2>Interview Questions</h2>
     <p style="margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--dark);">Select the questions below you asked from your assigned interview guide:</p>
@@ -881,13 +868,11 @@
       </div>
     </div>
 
-    <div class="nav">
-      <button class="prev" onclick="prevSlide(2)">← Prev</button>
-      <button class="next" onclick="nextSlide(2)">Next →</button>
-    </div>
   </div>
 
-  <!-- Slide 3: Candidacy Decision -->
+  <hr class="section-divider">
+
+  <!-- Section 3: Candidacy Decision -->
   <div class="slide" id="s3">
     <h2>Candidacy Decision</h2>
 
@@ -936,13 +921,11 @@
       </div>
     </div>
 
-    <div class="nav">
-      <button class="prev" onclick="prevSlide(3)">← Prev</button>
-      <button class="next" onclick="nextSlide(3)">Next →</button>
-    </div>
   </div>
 
-  <!-- Slide 4: Review & Generate JSON -->
+  <hr class="section-divider">
+
+  <!-- Section 4: Review & Generate JSON -->
   <div class="slide" id="s4">
     <h2>Review & Generate Output</h2>
     
@@ -963,16 +946,11 @@
       <div class="copy-success" id="submitSuccess" style="background-color: #4caf50; display: none;">✅ Submitted to Power Automate!</div>
     </div>
 
-    <div class="nav">
-      <button class="prev" onclick="prevSlide(4)">← Prev</button>
-    </div>
   </div>
 
 </div>
 
 <script>
-  let current = 1;
-  const total = 4;
   const allQuestions = [{"category": "Skill Based", "text": "How does your experience relate to this position?", "default": true}, {"category": "Skill Based", "text": "Walk me through a complex project you completed.", "default": false}, {"category": "Skill Based", "text": "How does your experience relate to this position?", "default": false}, {"category": "Skill Based", "text": "Can you give me an example of your system experience using [insert system] to solve [specific work example]?", "default": false}, {"category": "Skill Based", "text": "What technical skills do you consider your strongest assets?", "default": false}, {"category": "Skill Based", "text": "Tell me about a time you had to learn a new technology or tool quickly.", "default": false}, {"category": "Skill Based", "text": "Describe your experience with [specific software/tool relevant to position].", "default": false}, {"category": "Skill Based", "text": "How do you stay current with industry trends and developments?", "default": false}, {"category": "Skill Based", "text": "Walk me through a complex project you completed from start to finish.", "default": false}, {"category": "Competency", "text": "Describe a time you had to make a difficult decision quickly.", "default": true}, {"category": "Competency", "text": "Tell me about a challenge you faced and how you resolved it.", "default": false}, {"category": "Competency", "text": "Communicates Effectively: Can you tell me about a time you had to deliver a technical presentation to a different department without the same knowledge/language?", "default": false}, {"category": "Competency", "text": "Decision Quality: Describe a time you had to make a recommendation and gather a lot of information in a short time frame.", "default": false}, {"category": "Competency", "text": "Courage: Describe a time when you proposed an opposing idea to a leader above your job level.", "default": false}, {"category": "Competency", "text": "Problem Solving: Tell me about a challenging problem you faced and how you solved it.", "default": false}, {"category": "Competency", "text": "Leadership: Describe a situation where you had to lead a team through a difficult situation.", "default": false}, {"category": "Competency", "text": "Adaptability: Give an example of when you had to adjust to significant changes at work.", "default": false}, {"category": "Competency", "text": "Time Management: How do you prioritize when you have multiple urgent tasks?", "default": false}, {"category": "Shared Values", "text": "All Values: At Tillamook our culture is really important to us, can you tell me if you explored our Shared Values on our website and which one resonated with you the most and why?", "default": false}, {"category": "Shared Values", "text": "One Team: Tell me about a time you had to collaborate with multiple cross-functional teams to accomplish a task or project.", "default": false}, {"category": "Shared Values", "text": "Integrity: Describe a time when you had to make an ethical decision in the workplace.", "default": false}, {"category": "Shared Values", "text": "Excellence: Tell me about a time you went above and beyond to ensure quality.", "default": false}, {"category": "Shared Values", "text": "Innovation: Give an example of when you suggested a new approach or idea.", "default": false}, {"category": "Shared Values", "text": "Customer Focus: How do you ensure customer satisfaction in your work?", "default": false}];
   const POWER_AUTOMATE_URL = 'https://defaultd7a24e4807da410e982786fbeed880.f9.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/b35041ad013749b3afab15eb7eda4a02/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=PERCnOrQUh8nPY6d2U5fVoLR_WAowD9AeJ2dJQCS-Rc';
   const params = new URLSearchParams(location.search);
@@ -995,28 +973,6 @@
   if (infoRecruiterEl) infoRecruiterEl.textContent = recruiterFromLink || '—';
   if (infoHiringManagerEl) infoHiringManagerEl.textContent = hiringManagerFromLink || '—';
   
-  function showSlide(n) {
-    document.querySelectorAll('.slide').forEach(s => {
-      s.classList.remove('active');
-      s.style.opacity = '0';
-      s.style.visibility = 'hidden';
-    });
-    const target = document.getElementById(`s${n}`);
-    target.classList.add('active');
-    target.style.opacity = '1';
-    target.style.visibility = 'visible';
-    current = n;
-    if (n === 3) updateDecisionScores();
-  }
-
-  function nextSlide(from) { 
-    if (from === current) showSlide(current + 1); 
-  }
-  
-  function prevSlide(from) { 
-    if (from === current) showSlide(current - 1); 
-  }
-
   function updateCandidacyVisibility() {
     const val = document.querySelector('input[name="candidacy"]:checked')?.value;
     const panel = document.getElementById('decisionSections');
@@ -1177,7 +1133,6 @@
   }
   
   // Initialize
-  showSlide(1);
   updateSelectionCount();
 </script>
 </body>

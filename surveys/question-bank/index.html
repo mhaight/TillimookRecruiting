@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Interview Feedback Form | Tillamook</title>
+  <title>Question Bank | Tillamook</title>
   <style>
     @import 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600&family=Ultra:ital,wght@0,400&display=swap';
     
@@ -356,7 +356,7 @@
 <body>
 
 <div class="header">
-  <h1>Interview Feedback Form</h1>
+  <h1>Question Bank</h1>
   <div class="sub">Question Selection</div>
   <hr />
 </div>
@@ -399,10 +399,7 @@
       <h2>Interview Guides</h2>
       <p><strong>Select an interview guide:</strong></p>
       <ul style="margin: 1rem 0 1rem 2rem; line-height: 2;">
-        <li><a href="#" style="color: var(--blue); font-weight: 600;">Interview Guide 1</a></li>
-        <li><a href="#" style="color: var(--blue); font-weight: 600;">Interview Guide 2</a></li>
-        <li><a href="#" style="color: var(--blue); font-weight: 600;">Interview Guide 3</a></li>
-        <li><a href="#" style="color: var(--blue); font-weight: 600;">Interview Guide 4</a></li>
+        <li><a href="https://tillamook.sharepoint.com/:b:/s/PCSharedFolders/IQCjszvKQKzMTbz270vYkHUfAYBCnDD3q6MZLtYl7f2fLiY?e=XG6UkN" target="_blank" style="color: var(--blue); font-weight: 600;">Interview Guide 1</a></li>
       </ul>
 
       <div class="score-guide">
@@ -438,10 +435,10 @@
         <div class="question-item">
           <div class="question-row">
             <label class="question-label">
-              <input type="checkbox" name="selected_questions" value="q_0"  onchange="toggleRating(this, 'rating_0')">
+              <input type="checkbox" name="selected_questions" value="q_0" checked onchange="toggleRating(this, 'rating_0')">
               <span>How does your experience relate to this position?</span>
             </label>
-            <div class="question-rating" id="rating_0" style="display:none">
+            <div class="question-rating" id="rating_0" style="display:flex">
               <span class="rating-label">Score:</span>
               <label class="rating-option"><input type="radio" name="q_0_rating" value="5">5</label>
               <label class="rating-option"><input type="radio" name="q_0_rating" value="4">4</label>
@@ -455,7 +452,7 @@
           <div class="question-row">
             <label class="question-label">
               <input type="checkbox" name="selected_questions" value="q_1"  onchange="toggleRating(this, 'rating_1')">
-              <span>Can you give me an example of your system experience using [insert system] to solve [specific work example]?</span>
+              <span>Walk me through a complex project you completed.</span>
             </label>
             <div class="question-rating" id="rating_1" style="display:none">
               <span class="rating-label">Score:</span>
@@ -471,7 +468,7 @@
           <div class="question-row">
             <label class="question-label">
               <input type="checkbox" name="selected_questions" value="q_2"  onchange="toggleRating(this, 'rating_2')">
-              <span>What technical skills do you consider your strongest assets?</span>
+              <span>How does your experience relate to this position?</span>
             </label>
             <div class="question-rating" id="rating_2" style="display:none">
               <span class="rating-label">Score:</span>
@@ -487,7 +484,7 @@
           <div class="question-row">
             <label class="question-label">
               <input type="checkbox" name="selected_questions" value="q_3"  onchange="toggleRating(this, 'rating_3')">
-              <span>Tell me about a time you had to learn a new technology or tool quickly.</span>
+              <span>Can you give me an example of your system experience using [insert system] to solve [specific work example]?</span>
             </label>
             <div class="question-rating" id="rating_3" style="display:none">
               <span class="rating-label">Score:</span>
@@ -503,7 +500,7 @@
           <div class="question-row">
             <label class="question-label">
               <input type="checkbox" name="selected_questions" value="q_4"  onchange="toggleRating(this, 'rating_4')">
-              <span>Describe your experience with [specific software/tool relevant to position].</span>
+              <span>What technical skills do you consider your strongest assets?</span>
             </label>
             <div class="question-rating" id="rating_4" style="display:none">
               <span class="rating-label">Score:</span>
@@ -519,7 +516,7 @@
           <div class="question-row">
             <label class="question-label">
               <input type="checkbox" name="selected_questions" value="q_5"  onchange="toggleRating(this, 'rating_5')">
-              <span>How do you stay current with industry trends and developments?</span>
+              <span>Tell me about a time you had to learn a new technology or tool quickly.</span>
             </label>
             <div class="question-rating" id="rating_5" style="display:none">
               <span class="rating-label">Score:</span>
@@ -535,7 +532,7 @@
           <div class="question-row">
             <label class="question-label">
               <input type="checkbox" name="selected_questions" value="q_6"  onchange="toggleRating(this, 'rating_6')">
-              <span>Walk me through a complex project you completed from start to finish.</span>
+              <span>Describe your experience with [specific software/tool relevant to position].</span>
             </label>
             <div class="question-rating" id="rating_6" style="display:none">
               <span class="rating-label">Score:</span>
@@ -544,6 +541,38 @@
               <label class="rating-option"><input type="radio" name="q_6_rating" value="3">3</label>
               <label class="rating-option"><input type="radio" name="q_6_rating" value="2">2</label>
               <label class="rating-option"><input type="radio" name="q_6_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_7"  onchange="toggleRating(this, 'rating_7')">
+              <span>How do you stay current with industry trends and developments?</span>
+            </label>
+            <div class="question-rating" id="rating_7" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_7_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_7_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_7_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_7_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_7_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_8"  onchange="toggleRating(this, 'rating_8')">
+              <span>Walk me through a complex project you completed from start to finish.</span>
+            </label>
+            <div class="question-rating" id="rating_8" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_8_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_8_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_8_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_8_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_8_rating" value="1">1</label>
             </div>
           </div>
         </div>
@@ -573,42 +602,10 @@
         <div class="question-item">
           <div class="question-row">
             <label class="question-label">
-              <input type="checkbox" name="selected_questions" value="q_7"  onchange="toggleRating(this, 'rating_7')">
-              <span>Communicates Effectively: Can you tell me about a time you had to deliver a technical presentation to a different department without the same knowledge/language?</span>
+              <input type="checkbox" name="selected_questions" value="q_9" checked onchange="toggleRating(this, 'rating_9')">
+              <span>Describe a time you had to make a difficult decision quickly.</span>
             </label>
-            <div class="question-rating" id="rating_7" style="display:none">
-              <span class="rating-label">Score:</span>
-              <label class="rating-option"><input type="radio" name="q_7_rating" value="5">5</label>
-              <label class="rating-option"><input type="radio" name="q_7_rating" value="4">4</label>
-              <label class="rating-option"><input type="radio" name="q_7_rating" value="3">3</label>
-              <label class="rating-option"><input type="radio" name="q_7_rating" value="2">2</label>
-              <label class="rating-option"><input type="radio" name="q_7_rating" value="1">1</label>
-            </div>
-          </div>
-        </div>
-        <div class="question-item">
-          <div class="question-row">
-            <label class="question-label">
-              <input type="checkbox" name="selected_questions" value="q_8"  onchange="toggleRating(this, 'rating_8')">
-              <span>Decision Quality: Describe a time you had to make a recommendation and gather a lot of information in a short time frame.</span>
-            </label>
-            <div class="question-rating" id="rating_8" style="display:none">
-              <span class="rating-label">Score:</span>
-              <label class="rating-option"><input type="radio" name="q_8_rating" value="5">5</label>
-              <label class="rating-option"><input type="radio" name="q_8_rating" value="4">4</label>
-              <label class="rating-option"><input type="radio" name="q_8_rating" value="3">3</label>
-              <label class="rating-option"><input type="radio" name="q_8_rating" value="2">2</label>
-              <label class="rating-option"><input type="radio" name="q_8_rating" value="1">1</label>
-            </div>
-          </div>
-        </div>
-        <div class="question-item">
-          <div class="question-row">
-            <label class="question-label">
-              <input type="checkbox" name="selected_questions" value="q_9"  onchange="toggleRating(this, 'rating_9')">
-              <span>Courage: Describe a time when you proposed an opposing idea to a leader above your job level.</span>
-            </label>
-            <div class="question-rating" id="rating_9" style="display:none">
+            <div class="question-rating" id="rating_9" style="display:flex">
               <span class="rating-label">Score:</span>
               <label class="rating-option"><input type="radio" name="q_9_rating" value="5">5</label>
               <label class="rating-option"><input type="radio" name="q_9_rating" value="4">4</label>
@@ -622,7 +619,7 @@
           <div class="question-row">
             <label class="question-label">
               <input type="checkbox" name="selected_questions" value="q_10"  onchange="toggleRating(this, 'rating_10')">
-              <span>Problem Solving: Tell me about a challenging problem you faced and how you solved it.</span>
+              <span>Tell me about a challenge you faced and how you resolved it.</span>
             </label>
             <div class="question-rating" id="rating_10" style="display:none">
               <span class="rating-label">Score:</span>
@@ -638,7 +635,7 @@
           <div class="question-row">
             <label class="question-label">
               <input type="checkbox" name="selected_questions" value="q_11"  onchange="toggleRating(this, 'rating_11')">
-              <span>Leadership: Describe a situation where you had to lead a team through a difficult situation.</span>
+              <span>Communicates Effectively: Can you tell me about a time you had to deliver a technical presentation to a different department without the same knowledge/language?</span>
             </label>
             <div class="question-rating" id="rating_11" style="display:none">
               <span class="rating-label">Score:</span>
@@ -654,7 +651,7 @@
           <div class="question-row">
             <label class="question-label">
               <input type="checkbox" name="selected_questions" value="q_12"  onchange="toggleRating(this, 'rating_12')">
-              <span>Adaptability: Give an example of when you had to adjust to significant changes at work.</span>
+              <span>Decision Quality: Describe a time you had to make a recommendation and gather a lot of information in a short time frame.</span>
             </label>
             <div class="question-rating" id="rating_12" style="display:none">
               <span class="rating-label">Score:</span>
@@ -670,7 +667,7 @@
           <div class="question-row">
             <label class="question-label">
               <input type="checkbox" name="selected_questions" value="q_13"  onchange="toggleRating(this, 'rating_13')">
-              <span>Time Management: How do you prioritize when you have multiple urgent tasks?</span>
+              <span>Courage: Describe a time when you proposed an opposing idea to a leader above your job level.</span>
             </label>
             <div class="question-rating" id="rating_13" style="display:none">
               <span class="rating-label">Score:</span>
@@ -679,6 +676,70 @@
               <label class="rating-option"><input type="radio" name="q_13_rating" value="3">3</label>
               <label class="rating-option"><input type="radio" name="q_13_rating" value="2">2</label>
               <label class="rating-option"><input type="radio" name="q_13_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_14"  onchange="toggleRating(this, 'rating_14')">
+              <span>Problem Solving: Tell me about a challenging problem you faced and how you solved it.</span>
+            </label>
+            <div class="question-rating" id="rating_14" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_14_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_14_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_14_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_14_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_14_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_15"  onchange="toggleRating(this, 'rating_15')">
+              <span>Leadership: Describe a situation where you had to lead a team through a difficult situation.</span>
+            </label>
+            <div class="question-rating" id="rating_15" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_15_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_15_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_15_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_15_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_15_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_16"  onchange="toggleRating(this, 'rating_16')">
+              <span>Adaptability: Give an example of when you had to adjust to significant changes at work.</span>
+            </label>
+            <div class="question-rating" id="rating_16" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_16_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_16_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_16_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_16_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_16_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_17"  onchange="toggleRating(this, 'rating_17')">
+              <span>Time Management: How do you prioritize when you have multiple urgent tasks?</span>
+            </label>
+            <div class="question-rating" id="rating_17" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_17_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_17_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_17_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_17_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_17_rating" value="1">1</label>
             </div>
           </div>
         </div>
@@ -708,72 +769,8 @@
         <div class="question-item">
           <div class="question-row">
             <label class="question-label">
-              <input type="checkbox" name="selected_questions" value="q_14"  onchange="toggleRating(this, 'rating_14')">
-              <span>All Values: At Tillamook our culture is really important to us, can you tell me if you explored our Shared Values on our website and which one resonated with you the most and why?</span>
-            </label>
-            <div class="question-rating" id="rating_14" style="display:none">
-              <span class="rating-label">Score:</span>
-              <label class="rating-option"><input type="radio" name="q_14_rating" value="5">5</label>
-              <label class="rating-option"><input type="radio" name="q_14_rating" value="4">4</label>
-              <label class="rating-option"><input type="radio" name="q_14_rating" value="3">3</label>
-              <label class="rating-option"><input type="radio" name="q_14_rating" value="2">2</label>
-              <label class="rating-option"><input type="radio" name="q_14_rating" value="1">1</label>
-            </div>
-          </div>
-        </div>
-        <div class="question-item">
-          <div class="question-row">
-            <label class="question-label">
-              <input type="checkbox" name="selected_questions" value="q_15"  onchange="toggleRating(this, 'rating_15')">
-              <span>One Team: Tell me about a time you had to collaborate with multiple cross-functional teams to accomplish a task or project.</span>
-            </label>
-            <div class="question-rating" id="rating_15" style="display:none">
-              <span class="rating-label">Score:</span>
-              <label class="rating-option"><input type="radio" name="q_15_rating" value="5">5</label>
-              <label class="rating-option"><input type="radio" name="q_15_rating" value="4">4</label>
-              <label class="rating-option"><input type="radio" name="q_15_rating" value="3">3</label>
-              <label class="rating-option"><input type="radio" name="q_15_rating" value="2">2</label>
-              <label class="rating-option"><input type="radio" name="q_15_rating" value="1">1</label>
-            </div>
-          </div>
-        </div>
-        <div class="question-item">
-          <div class="question-row">
-            <label class="question-label">
-              <input type="checkbox" name="selected_questions" value="q_16"  onchange="toggleRating(this, 'rating_16')">
-              <span>Integrity: Describe a time when you had to make an ethical decision in the workplace.</span>
-            </label>
-            <div class="question-rating" id="rating_16" style="display:none">
-              <span class="rating-label">Score:</span>
-              <label class="rating-option"><input type="radio" name="q_16_rating" value="5">5</label>
-              <label class="rating-option"><input type="radio" name="q_16_rating" value="4">4</label>
-              <label class="rating-option"><input type="radio" name="q_16_rating" value="3">3</label>
-              <label class="rating-option"><input type="radio" name="q_16_rating" value="2">2</label>
-              <label class="rating-option"><input type="radio" name="q_16_rating" value="1">1</label>
-            </div>
-          </div>
-        </div>
-        <div class="question-item">
-          <div class="question-row">
-            <label class="question-label">
-              <input type="checkbox" name="selected_questions" value="q_17"  onchange="toggleRating(this, 'rating_17')">
-              <span>Excellence: Tell me about a time you went above and beyond to ensure quality.</span>
-            </label>
-            <div class="question-rating" id="rating_17" style="display:none">
-              <span class="rating-label">Score:</span>
-              <label class="rating-option"><input type="radio" name="q_17_rating" value="5">5</label>
-              <label class="rating-option"><input type="radio" name="q_17_rating" value="4">4</label>
-              <label class="rating-option"><input type="radio" name="q_17_rating" value="3">3</label>
-              <label class="rating-option"><input type="radio" name="q_17_rating" value="2">2</label>
-              <label class="rating-option"><input type="radio" name="q_17_rating" value="1">1</label>
-            </div>
-          </div>
-        </div>
-        <div class="question-item">
-          <div class="question-row">
-            <label class="question-label">
               <input type="checkbox" name="selected_questions" value="q_18"  onchange="toggleRating(this, 'rating_18')">
-              <span>Innovation: Give an example of when you suggested a new approach or idea.</span>
+              <span>All Values: At Tillamook our culture is really important to us, can you tell me if you explored our Shared Values on our website and which one resonated with you the most and why?</span>
             </label>
             <div class="question-rating" id="rating_18" style="display:none">
               <span class="rating-label">Score:</span>
@@ -789,7 +786,7 @@
           <div class="question-row">
             <label class="question-label">
               <input type="checkbox" name="selected_questions" value="q_19"  onchange="toggleRating(this, 'rating_19')">
-              <span>Customer Focus: How do you ensure customer satisfaction in your work?</span>
+              <span>One Team: Tell me about a time you had to collaborate with multiple cross-functional teams to accomplish a task or project.</span>
             </label>
             <div class="question-rating" id="rating_19" style="display:none">
               <span class="rating-label">Score:</span>
@@ -798,6 +795,70 @@
               <label class="rating-option"><input type="radio" name="q_19_rating" value="3">3</label>
               <label class="rating-option"><input type="radio" name="q_19_rating" value="2">2</label>
               <label class="rating-option"><input type="radio" name="q_19_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_20"  onchange="toggleRating(this, 'rating_20')">
+              <span>Integrity: Describe a time when you had to make an ethical decision in the workplace.</span>
+            </label>
+            <div class="question-rating" id="rating_20" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_20_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_20_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_20_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_20_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_20_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_21"  onchange="toggleRating(this, 'rating_21')">
+              <span>Excellence: Tell me about a time you went above and beyond to ensure quality.</span>
+            </label>
+            <div class="question-rating" id="rating_21" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_21_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_21_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_21_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_21_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_21_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_22"  onchange="toggleRating(this, 'rating_22')">
+              <span>Innovation: Give an example of when you suggested a new approach or idea.</span>
+            </label>
+            <div class="question-rating" id="rating_22" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_22_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_22_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_22_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_22_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_22_rating" value="1">1</label>
+            </div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="question-row">
+            <label class="question-label">
+              <input type="checkbox" name="selected_questions" value="q_23"  onchange="toggleRating(this, 'rating_23')">
+              <span>Customer Focus: How do you ensure customer satisfaction in your work?</span>
+            </label>
+            <div class="question-rating" id="rating_23" style="display:none">
+              <span class="rating-label">Score:</span>
+              <label class="rating-option"><input type="radio" name="q_23_rating" value="5">5</label>
+              <label class="rating-option"><input type="radio" name="q_23_rating" value="4">4</label>
+              <label class="rating-option"><input type="radio" name="q_23_rating" value="3">3</label>
+              <label class="rating-option"><input type="radio" name="q_23_rating" value="2">2</label>
+              <label class="rating-option"><input type="radio" name="q_23_rating" value="1">1</label>
             </div>
           </div>
         </div>
@@ -912,7 +973,7 @@
 <script>
   let current = 1;
   const total = 4;
-  const allQuestions = [{"category": "Skill Based", "text": "How does your experience relate to this position?", "default": false}, {"category": "Skill Based", "text": "Can you give me an example of your system experience using [insert system] to solve [specific work example]?", "default": false}, {"category": "Skill Based", "text": "What technical skills do you consider your strongest assets?", "default": false}, {"category": "Skill Based", "text": "Tell me about a time you had to learn a new technology or tool quickly.", "default": false}, {"category": "Skill Based", "text": "Describe your experience with [specific software/tool relevant to position].", "default": false}, {"category": "Skill Based", "text": "How do you stay current with industry trends and developments?", "default": false}, {"category": "Skill Based", "text": "Walk me through a complex project you completed from start to finish.", "default": false}, {"category": "Competency", "text": "Communicates Effectively: Can you tell me about a time you had to deliver a technical presentation to a different department without the same knowledge/language?", "default": false}, {"category": "Competency", "text": "Decision Quality: Describe a time you had to make a recommendation and gather a lot of information in a short time frame.", "default": false}, {"category": "Competency", "text": "Courage: Describe a time when you proposed an opposing idea to a leader above your job level.", "default": false}, {"category": "Competency", "text": "Problem Solving: Tell me about a challenging problem you faced and how you solved it.", "default": false}, {"category": "Competency", "text": "Leadership: Describe a situation where you had to lead a team through a difficult situation.", "default": false}, {"category": "Competency", "text": "Adaptability: Give an example of when you had to adjust to significant changes at work.", "default": false}, {"category": "Competency", "text": "Time Management: How do you prioritize when you have multiple urgent tasks?", "default": false}, {"category": "Shared Values", "text": "All Values: At Tillamook our culture is really important to us, can you tell me if you explored our Shared Values on our website and which one resonated with you the most and why?", "default": false}, {"category": "Shared Values", "text": "One Team: Tell me about a time you had to collaborate with multiple cross-functional teams to accomplish a task or project.", "default": false}, {"category": "Shared Values", "text": "Integrity: Describe a time when you had to make an ethical decision in the workplace.", "default": false}, {"category": "Shared Values", "text": "Excellence: Tell me about a time you went above and beyond to ensure quality.", "default": false}, {"category": "Shared Values", "text": "Innovation: Give an example of when you suggested a new approach or idea.", "default": false}, {"category": "Shared Values", "text": "Customer Focus: How do you ensure customer satisfaction in your work?", "default": false}];
+  const allQuestions = [{"category": "Skill Based", "text": "How does your experience relate to this position?", "default": true}, {"category": "Skill Based", "text": "Walk me through a complex project you completed.", "default": false}, {"category": "Skill Based", "text": "How does your experience relate to this position?", "default": false}, {"category": "Skill Based", "text": "Can you give me an example of your system experience using [insert system] to solve [specific work example]?", "default": false}, {"category": "Skill Based", "text": "What technical skills do you consider your strongest assets?", "default": false}, {"category": "Skill Based", "text": "Tell me about a time you had to learn a new technology or tool quickly.", "default": false}, {"category": "Skill Based", "text": "Describe your experience with [specific software/tool relevant to position].", "default": false}, {"category": "Skill Based", "text": "How do you stay current with industry trends and developments?", "default": false}, {"category": "Skill Based", "text": "Walk me through a complex project you completed from start to finish.", "default": false}, {"category": "Competency", "text": "Describe a time you had to make a difficult decision quickly.", "default": true}, {"category": "Competency", "text": "Tell me about a challenge you faced and how you resolved it.", "default": false}, {"category": "Competency", "text": "Communicates Effectively: Can you tell me about a time you had to deliver a technical presentation to a different department without the same knowledge/language?", "default": false}, {"category": "Competency", "text": "Decision Quality: Describe a time you had to make a recommendation and gather a lot of information in a short time frame.", "default": false}, {"category": "Competency", "text": "Courage: Describe a time when you proposed an opposing idea to a leader above your job level.", "default": false}, {"category": "Competency", "text": "Problem Solving: Tell me about a challenging problem you faced and how you solved it.", "default": false}, {"category": "Competency", "text": "Leadership: Describe a situation where you had to lead a team through a difficult situation.", "default": false}, {"category": "Competency", "text": "Adaptability: Give an example of when you had to adjust to significant changes at work.", "default": false}, {"category": "Competency", "text": "Time Management: How do you prioritize when you have multiple urgent tasks?", "default": false}, {"category": "Shared Values", "text": "All Values: At Tillamook our culture is really important to us, can you tell me if you explored our Shared Values on our website and which one resonated with you the most and why?", "default": false}, {"category": "Shared Values", "text": "One Team: Tell me about a time you had to collaborate with multiple cross-functional teams to accomplish a task or project.", "default": false}, {"category": "Shared Values", "text": "Integrity: Describe a time when you had to make an ethical decision in the workplace.", "default": false}, {"category": "Shared Values", "text": "Excellence: Tell me about a time you went above and beyond to ensure quality.", "default": false}, {"category": "Shared Values", "text": "Innovation: Give an example of when you suggested a new approach or idea.", "default": false}, {"category": "Shared Values", "text": "Customer Focus: How do you ensure customer satisfaction in your work?", "default": false}];
   const POWER_AUTOMATE_URL = 'https://defaultd7a24e4807da410e982786fbeed880.f9.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/b35041ad013749b3afab15eb7eda4a02/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=PERCnOrQUh8nPY6d2U5fVoLR_WAowD9AeJ2dJQCS-Rc';
   const params = new URLSearchParams(location.search);
   const candidateFromLink = params.get('candidate') || params.get('candidateName') || params.get('candidate_name') || '';
@@ -1010,7 +1071,7 @@
   
   function selectDefaults() {
     // Store which questions were default
-    const defaults = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+    const defaults = [true, false, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
     document.querySelectorAll('input[name="selected_questions"]').forEach((cb, index) => {
       cb.checked = defaults[index] || false;
     });

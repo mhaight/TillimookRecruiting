@@ -384,6 +384,22 @@
         <label style="display: block; font-weight: 600; color: var(--orange); margin-bottom: 0.4rem;">Hiring Manager</label>
         <div id="info_hiringManager" style="width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; background: #f5f7fa; min-height: 2.5rem;">-</div>
       </div>
+      <div>
+        <label style="display: block; font-weight: 600; color: var(--orange); margin-bottom: 0.4rem;">Candidate ID</label>
+        <div id="info_candidateId" style="width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; background: #f5f7fa; min-height: 2.5rem;">-</div>
+      </div>
+      <div>
+        <label style="display: block; font-weight: 600; color: var(--orange); margin-bottom: 0.4rem;">Req ID</label>
+        <div id="info_reqId" style="width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; background: #f5f7fa; min-height: 2.5rem;">-</div>
+      </div>
+      <div>
+        <label style="display: block; font-weight: 600; color: var(--orange); margin-bottom: 0.4rem;">Interviewer EEID</label>
+        <div id="info_interviewerEeid" style="width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; background: #f5f7fa; min-height: 2.5rem;">-</div>
+      </div>
+      <div>
+        <label style="display: block; font-weight: 600; color: var(--orange); margin-bottom: 0.4rem;">Interviewer Email</label>
+        <div id="info_interviewerEmail" style="width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; background: #f5f7fa; min-height: 2.5rem;">-</div>
+      </div>
     </div>
 
     <div class="intro">
@@ -962,6 +978,10 @@
   const interviewerFromLink = params.get('interviewer') || params.get('interviewerName') || params.get('interviewer_name') || '';
   const recruiterFromLink = params.get('recruiter') || params.get('recruiterName') || params.get('recruiter_name') || '';
   const hiringManagerFromLink = params.get('hiringManager') || params.get('hiring_manager') || params.get('hiringmanager') || '';
+  const candidateIdFromLink = params.get('candidateId') || params.get('candidate_id') || '';
+  const reqIdFromLink = params.get('reqId') || params.get('req_id') || '';
+  const interviewerEeidFromLink = params.get('interviewerEeid') || params.get('interviewer_eeid') || '';
+  const interviewerEmailFromLink = params.get('interviewerEmail') || params.get('interviewer_email') || '';
   const todayInterviewDate = new Date().toISOString().split('T')[0];
 
   const infoCandidateEl = document.getElementById('info_candidate');
@@ -969,12 +989,20 @@
   const infoInterviewerEl = document.getElementById('info_interviewer');
   const infoRecruiterEl = document.getElementById('info_recruiter');
   const infoHiringManagerEl = document.getElementById('info_hiringManager');
+  const infoCandidateIdEl = document.getElementById('info_candidateId');
+  const infoReqIdEl = document.getElementById('info_reqId');
+  const infoInterviewerEeidEl = document.getElementById('info_interviewerEeid');
+  const infoInterviewerEmailEl = document.getElementById('info_interviewerEmail');
 
   if (infoCandidateEl) infoCandidateEl.textContent = candidateFromLink || '—';
   if (infoPositionEl) infoPositionEl.textContent = positionFromLink || '—';
   if (infoInterviewerEl) infoInterviewerEl.textContent = interviewerFromLink || '—';
   if (infoRecruiterEl) infoRecruiterEl.textContent = recruiterFromLink || '—';
   if (infoHiringManagerEl) infoHiringManagerEl.textContent = hiringManagerFromLink || '—';
+  if (infoCandidateIdEl) infoCandidateIdEl.textContent = candidateIdFromLink || '—';
+  if (infoReqIdEl) infoReqIdEl.textContent = reqIdFromLink || '—';
+  if (infoInterviewerEeidEl) infoInterviewerEeidEl.textContent = interviewerEeidFromLink || '—';
+  if (infoInterviewerEmailEl) infoInterviewerEmailEl.textContent = interviewerEmailFromLink || '—';
   
   function updateCandidacyVisibility() {
     const val = document.querySelector('input[name="candidacy"]:checked')?.value;
@@ -1059,24 +1087,39 @@
     const compScoreInput = document.querySelector('input[name="sectionScore_comp"]:checked');
     const valuesScoreInput = document.querySelector('input[name="sectionScore_values"]:checked');
 
+    const skillScore = skillScoreInput ? parseInt(skillScoreInput.value) : null;
+    const compScore = compScoreInput ? parseInt(compScoreInput.value) : null;
+    const valuesScore = valuesScoreInput ? parseInt(valuesScoreInput.value) : null;
+    const sectionScores = [skillScore, compScore, valuesScore].filter(s => s !== null);
+    const averageSectionScore = sectionScores.length
+      ? Math.round((sectionScores.reduce((a, b) => a + b, 0) / sectionScores.length) * 100) / 100
+      : null;
+
     const jsonData = {
       timestamp: new Date().toISOString(),
       candidate: candidateFromLink,
+      candidateId: candidateIdFromLink,
       position: positionFromLink,
+      reqId: reqIdFromLink,
       interviewer: interviewerFromLink,
+      interviewerEeid: interviewerEeidFromLink,
+      interviewerEmail: interviewerEmailFromLink,
       recruiter: recruiterFromLink,
       hiringManager: hiringManagerFromLink,
       interviewDate: todayInterviewDate,
-      skillSectionScore: skillScoreInput ? parseInt(skillScoreInput.value) : null,
-      competencySectionScore: compScoreInput ? parseInt(compScoreInput.value) : null,
-      valuesSectionScore: valuesScoreInput ? parseInt(valuesScoreInput.value) : null,
+      skillSectionScore: skillScore,
+      competencySectionScore: compScore,
+      valuesSectionScore: valuesScore,
+      averageSectionScore: averageSectionScore,
+      skillAdditionalQuestions: document.getElementById('skill_additional_questions')?.value || '',
+      competencyAdditionalQuestions: document.getElementById('comp_additional_questions')?.value || '',
+      valuesAdditionalQuestions: document.getElementById('values_additional_questions')?.value || '',
       totalQuestionsSelected: selectedQuestions.length,
       supportsCandidacy: candidacyInput ? candidacyInput.value : null,
       candidacyReason: candidacyComments ? candidacyComments.value : '',
       decisionSections: (candidacyInput?.value === 'No' || candidacyInput?.value === 'Maybe')
         ? Array.from(document.querySelectorAll('input[name="decisionSection"]:checked')).map(cb => cb.value)
         : null,
-      additionalComments: candidacyComments ? candidacyComments.value : '',
       selectedQuestions: selectedQuestions
     };
     

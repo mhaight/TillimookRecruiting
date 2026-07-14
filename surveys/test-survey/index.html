@@ -941,6 +941,11 @@
   
   // Initialize
   updateSelectionCount();
+
+  // Keep decision scores in sync whenever a section score changes
+  document.querySelectorAll('input[name^="sectionScore_"]').forEach(function(input) {
+    input.addEventListener('change', updateDecisionScores);
+  });
 </script>
 </body>
 </html>

@@ -624,26 +624,20 @@
 
   <hr class="section-divider">
 
-  <!-- Section 4: Review & Generate JSON -->
+  <!-- Section 4: Submit -->
   <div class="slide" id="s4">
-    <h2>Review & Generate Output</h2>
-    
+    <h2>Submit Feedback</h2>
+
     <div class="selection-count" id="totalCount" style="margin: 2rem 0; font-size: 1.3rem;">
       Total: 0 questions selected
     </div>
 
-    <div class="json-display active">
-      <h3>📋 Selected Questions & Ratings JSON</h3>
-      <p>Click "Generate JSON" to create the output, then copy to Power Automate:</p>
-      <pre id="jsonOutput" style="min-height: 100px;">Click "Generate JSON" to see output...</pre>
-      <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
-        <button class="submit" onclick="generateJSON()">📋 Generate JSON</button>
-        <button class="submit" onclick="copyToClipboard()">📋 Copy to Clipboard</button>
-        <button class="submit" onclick="submitToAutomate()" style="background: var(--green, #28a745);">✉️ Submit to Power Automate</button>
-      </div>
-      <div class="copy-success" id="copySuccess">✅ Copied to clipboard!</div>
-      <div class="copy-success" id="submitSuccess" style="background-color: #4caf50; display: none;">✅ Submitted to Power Automate!</div>
+    <p style="font-size: 1.05rem; color: var(--dark); margin-bottom: 1.5rem;">Please review your answers above, then click Submit to send your feedback.</p>
+
+    <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
+      <button class="submit" id="submitBtn" onclick="submitToAutomate()">Submit Feedback</button>
     </div>
+    <div class="copy-success" id="submitSuccess" style="background-color: #4caf50; display: none;">✅ Feedback submitted. Thank you!</div>
 
   </div>
 
@@ -751,7 +745,7 @@
     updateSelectionCount();
   }
 
-  function generateJSON() {
+  function buildJSON() {
     const selectedQuestions = [];
     document.querySelectorAll('input[name="selected_questions"]:checked').forEach(cb => {
       const index = parseInt(cb.value.replace('q_', ''));
@@ -775,7 +769,7 @@
       ? Math.round((sectionScores.reduce((a, b) => a + b, 0) / sectionScores.length) * 100) / 100
       : null;
 
-    const jsonData = {
+    return {
       timestamp: new Date().toISOString(),
       candidate: candidateFromLink,
       candidateId: candidateIdFromLink,
@@ -802,60 +796,44 @@
         : null,
       selectedQuestions: selectedQuestions
     };
-    
-    const jsonOutput = document.getElementById('jsonOutput');
-    jsonOutput.textContent = JSON.stringify(jsonData, null, 2);
   }
-  
-  function copyToClipboard() {
-    const jsonOutput = document.getElementById('jsonOutput');
-    const copySuccess = document.getElementById('copySuccess');
-    
-    navigator.clipboard.writeText(jsonOutput.textContent).then(() => {
-      copySuccess.style.display = 'block';
-      setTimeout(() => {
-        copySuccess.style.display = 'none';
-      }, 3000);
-    }).catch(err => {
-      alert('Failed to copy: ' + err);
-    });
-  }
-  
+
   function submitToAutomate() {
-    const jsonOutput = document.getElementById('jsonOutput');
+    const submitBtn = document.getElementById('submitBtn');
     const submitSuccess = document.getElementById('submitSuccess');
-    
-    if (!jsonOutput.textContent || jsonOutput.textContent.includes('Click "Generate JSON"')) {
-      alert('Please generate the JSON first.');
-      return;
+    const jsonData = buildJSON();
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
     }
-    
-    try {
-      const jsonData = JSON.parse(jsonOutput.textContent);
-      
-      fetch(POWER_AUTOMATE_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(jsonData)
-      })
-      .then(response => {
-        if (response.ok) {
-          submitSuccess.style.display = 'block';
-          setTimeout(() => {
-            submitSuccess.style.display = 'none';
-          }, 3000);
-        } else {
-          alert('Failed to submit. Status: ' + response.status);
+
+    fetch(POWER_AUTOMATE_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(jsonData)
+    })
+    .then(response => {
+      if (response.ok) {
+        if (submitSuccess) submitSuccess.style.display = 'block';
+        if (submitBtn) submitBtn.textContent = 'Submitted';
+      } else {
+        alert('Failed to submit. Status: ' + response.status);
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit Feedback';
         }
-      })
-      .catch(err => {
-        alert('Error submitting to Power Automate: ' + err);
-      });
-    } catch (err) {
-      alert('Invalid JSON: ' + err);
-    }
+      }
+    })
+    .catch(err => {
+      alert('Error submitting: ' + err);
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Feedback';
+      }
+    });
   }
   
   // Initialize

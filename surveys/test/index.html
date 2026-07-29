@@ -676,9 +676,10 @@
   // Support compact ?d=pipe|delimited payload from the VBA-generated links file.
   // Field order: candidate|candidateId|position|reqId|interviewer|eeid|
   //              intEmail|recruiter|rcEmail|hiringManager|hmEmail
+  // Pipe characters within field values are escaped as %7C by VBA.
   // Falls back to individual params for backward compatibility.
   const _d = params.get('d');
-  const _p = _d ? _d.split('|') : [];
+  const _p = _d ? _d.split('|').map(function(v) { return v.replace(/%7C/gi, '|'); }) : [];
 
   const candidateFromLink       = (_p[0]  || '') || params.get('c')   || params.get('candidate')        || '';
   const candidateIdFromLink     = (_p[1]  || '') || params.get('ci')  || params.get('candidateId')      || '';
